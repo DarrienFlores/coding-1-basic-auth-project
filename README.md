@@ -22,7 +22,15 @@ In this project, you will design and build a web application with a basic **logi
 
 ## Project Requirements:
 
-| Phase I: Build Login & Registration Structure (15 pts) |
+| Part I: Planning & Design (15 pts) |
+|----------|
+* Decide on a game idea and core goal
+* Game rules and player actions are written or sketched out
+* Main objects (player, obstacles, goals, enemies, etc.) are identified
+* Write a simple plan in the planning_and_design.txt file showing how the game will work step-by-step
+* Do not move forward to the next phase until checking with Mr. Jackson
+
+| Phase II: Build Login & Registration Structure (15 pts) |
 |----------|
 * Create a basic Flask app with a login page and registration page.
 * Include fields for username and password.
@@ -30,21 +38,21 @@ In this project, you will design and build a web application with a basic **logi
 * Add navigation between login and registration pages.
 * Confirm that basic functionality works before moving to the next phase.
 
-| Phase II: Store Passwords in a Database (15 pts) |
+| Phase III: Store Passwords in a Database (20 pts) |
 |----------|
 * Set up an SQLite database to persist user data.
 * Store username and password fields in the database.
 * Ensure that user data remains intact even when the app is restarted.
 * Verify that registration adds users correctly and login checks the database.
 
-| Phase III: Encrypt Passwords with Bcrypt (20 pts) |
+| Phase IV: Encrypt Passwords with Bcrypt (20 pts) |
 |----------|
 * Install and use bcrypt to hash passwords before storing them in the database.
 * Update the login logic to verify passwords against the hashed values.
 * Ensure that passwords are never stored in plain text.
 * Test that registration and login work correctly for multiple users.
 
-| Phase IV: Require Password Complexity (20 pts) |
+| Phase V: Require Password Complexity (15 pts) |
 |----------|
 * Implement password validation rules:
   - At least 1 uppercase letter
@@ -55,7 +63,7 @@ In this project, you will design and build a web application with a basic **logi
 * Ensure that registration only succeeds if the password meets the rules.
 * Test the validation thoroughly with multiple password examples.
 
-| Phase V: Reflection + Demo Video (20 pts) |
+| Phase VI: Reflection + Demo Video (15 pts) |
 |----------|
 * Record a screen-share of another student testing your login system.
 * Show a screen-share of your code and explain how each phase was implemented.
