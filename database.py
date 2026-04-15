@@ -14,5 +14,11 @@ def init_db():
             password TEXT
         )
     """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS posts (
+            Author TEXT PRIMARY KEY, 
+            Message TEXT
+        )
+    """)
     conn.commit()
     conn.close()
