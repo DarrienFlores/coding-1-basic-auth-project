@@ -27,8 +27,11 @@ def seed_database():
     ]
     
     sample_posts = [
-        
+        ("alice", "Hello world!"),
+        ("bob", "Why, hey you guys"),
+        ("charlie", "I am a cat"),
     ]
+
     try:
         for username, password in sample_users:
             hashed_pw = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
@@ -37,7 +40,13 @@ def seed_database():
                 (username, hashed_pw)
             )
             print(f"Created user: {username}")
-        
+
+        for author, message in sample_posts:
+            conn.execute(
+                "INSERT INTO posts (author, message) VALUES (?, ?)",
+                (author, message)
+            )
+            print(f"Created message: {message}")
         conn.commit()
         print("\nDatabase seeding complete!")
     
