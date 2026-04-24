@@ -77,8 +77,6 @@ def register():
 
 @app.route("/dashboard")
 def secret():
-    # TODO: RENAME THIS ROUTE TO /dashboard
-
     if "user" not in session:
         return redirect(url_for("login"))
 
