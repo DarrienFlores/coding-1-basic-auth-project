@@ -46,7 +46,7 @@ def seed_database():
                 "INSERT INTO posts (author, message) VALUES (?, ?)",
                 (author, message)
             )
-            print(f"Created message: {message}")
+            print(f"Created post: {message}")
         conn.commit()
         print("\nDatabase seeding complete!")
     
