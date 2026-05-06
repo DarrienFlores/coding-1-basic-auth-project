@@ -115,13 +115,25 @@ def create():
 
     if request.method == "POST":
         # TODO: Get form data (title, content)
-
+        author = request.form["author"].strip()
+        message = request.form["message"].strip()
         # TODO: Connect to database
+        if not author or not message:
+            error = "Fields cannot be empty"
+        else:
+            conn = get_db()
+            try:
+                conn.execute(
+                    "INSERT INTO posts (author, message) VALUES (?, ?)",
+                    (author, message)
+                )
+                conn.commit()
 
-        # TODO: Insert into entries table
-        # IMPORTANT: include session["user"]
-
-        # TODO: Commit and close
+                return redirect(url_for("dashboard"))
+            except:
+                conn.rollback()
+            finally:
+                conn.close()
 
         return redirect(url_for("dashboard"))
 
