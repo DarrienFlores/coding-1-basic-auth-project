@@ -147,32 +147,37 @@ def create():
 # - Show it in a form
 # - Update the database on submit
 
-"""
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
 def edit(id):
     if "user" not in session:
         return redirect(url_for("login"))
 
     # TODO: Connect to database
-
+    conn = get_db()
+    entry = conn.execute(
+        "SELECT * FROM entries WHERE id=?",
+        (id,)
+    ).fetchone()
     # TODO: Get entry WHERE id AND user
     # This prevents editing other users' data
 
-    # if not entry:
-    #     return "Not allowed"
+    if not entry:
+        conn.close()
+        return "Entry not found"
 
     if request.method == "POST":
         # TODO: Get updated form data
-
+        author = request.form["author"].strip
+        message = request.form["message"].strip
         # TODO: Update database
         # IMPORTANT: include id AND session["user"]
-
+        if not author or not message:
+            error = "Fields cannot be empty"
         # TODO: Commit and close
 
         return redirect(url_for("dashboard"))
 
     return render_template("edit.html", entry=entry)
-"""
 
 # ---------- DELETE ----------
 # TODO: Create a route like /delete/<id>

@@ -16,6 +16,7 @@ def init_db():
     """)
     conn.execute("""
         CREATE TABLE IF NOT EXISTS posts (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             author TEXT PRIMARY KEY, 
             message TEXT
         )
