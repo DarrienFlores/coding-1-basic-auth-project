@@ -27,9 +27,9 @@ def seed_database():
     ]
     
     sample_posts = [
-        ("alice", "Hello world!"),
-        ("bob", "Why, hey you guys"),
-        ("charlie", "I am a cat"),
+        ("OG PRINT STATEMENT", "Hello world!"),
+        ("Greetings", "Why, hey you guys"),
+        ("What I am", "I am a cat"),
     ]
 
     try:
@@ -41,12 +41,12 @@ def seed_database():
             )
             print(f"Created user: {username}")
 
-        for author, message in sample_posts:
+        for title, content in sample_posts:
             conn.execute(
-                "INSERT INTO posts (author, message) VALUES (?, ?)",
-                (author, message)
+                "INSERT INTO posts (title, content) VALUES (?, ?)",
+                (title, content)
             )
-            print(f"Created post: {message}")
+            print(f"Created post: {content}")
         conn.commit()
         print("\nDatabase seeding complete!")
     

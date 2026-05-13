@@ -115,17 +115,17 @@ def create():
 
     if request.method == "POST":
         # TODO: Get form data (title, content)
-        author = request.form["author"].strip()
-        message = request.form["message"].strip()
+        title = request.form["title"].strip()
+        content = request.form["content"].strip()
         # TODO: Connect to database
-        if not author or not message:
+        if not tile or not content:
             error = "Fields cannot be empty"
         else:
             conn = get_db()
             try:
                 conn.execute(
-                    "INSERT INTO posts (author, message) VALUES (?, ?)",
-                    (author, message)
+                    "INSERT INTO posts (title, content) VALUES (?, ?)",
+                    (title, content)
                 )
                 conn.commit()
 
@@ -155,7 +155,7 @@ def edit(id):
     # TODO: Connect to database
     conn = get_db()
     entry = conn.execute(
-        "SELECT * FROM entries WHERE id=?",
+        "SELECT * FROM posts WHERE id=?",
         (id,)
     ).fetchone()
     # TODO: Get entry WHERE id AND user
@@ -166,18 +166,17 @@ def edit(id):
         return "Entry not found"
 
     if request.method == "POST":
+        title = request.form["title"].strip
+        content = request.form["content"].strip
 
-        author = request.form["author"].strip
-        message = request.form["message"].strip
-
-        if not author or not message:
+        if not title or not content:
             error = "Fields cannot be empty"
 
         else:
             try:
                 conn.execute(
-                    "UPDATE posts SET author=?, message=? WHERE id=?",
-                    (author, message, id)
+                    "UPDATE posts SET title=?, content=? WHERE id=?",
+                    (title, content, id)
                 )
                 conn.commit()
                 conn.close()

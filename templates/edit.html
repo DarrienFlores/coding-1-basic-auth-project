@@ -5,16 +5,16 @@
 
 <!-- TODO: Create a form that sends a POST request -->
 
-    <!-- TODO: Pre-fill title using entry data -->
-    <!-- Hint: value="{{ entry['title'] }}" -->
+<!-- TODO: Pre-fill title using entry data -->
+<!-- Hint: value="{{ entry['title'] }}" -->
 <form method="POST">
-    <input name="author" placeholder="Author" value="{{ entry['author'] }}"><br>
-    <input name="message" placeholder="Message" value="{{ entry['message'] }}"><br>
+    <input name="title" placeholder="Title" value="{{ entry['title'] }}"><br>
+    <input name="content" placeholder="Content" value="{{ entry['content'] }}"><br>
     <button type="submit">Update Entry</button>
 </form>
-    <!-- TODO: Pre-fill content using entry data -->
+<!-- TODO: Pre-fill content using entry data -->
 
-    <!-- TODO: Add submit button -->
+<!-- TODO: Add submit button -->
 
 <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
 
