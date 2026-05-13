@@ -5,17 +5,17 @@
 
 <!-- TODO: Create a form that sends a POST request -->
 
-<form method="POST">
-
     <!-- TODO: Pre-fill title using entry data -->
     <!-- Hint: value="{{ entry['title'] }}" -->
-
+<form method="POST">
+    <input name="author" placeholder="Author" value="{{ entry['author'] }}"><br>
+    <input name="message" placeholder="Message" value="{{ entry['message'] }}"><br>
+    <button type="submit">Update Entry</button>
+</form>
     <!-- TODO: Pre-fill content using entry data -->
 
     <!-- TODO: Add submit button -->
 
-</form>
-
-<!-- TODO: Add a link back to dashboard -->
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
 
 {% endblock %}

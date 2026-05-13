@@ -166,17 +166,28 @@ def edit(id):
         return "Entry not found"
 
     if request.method == "POST":
-        # TODO: Get updated form data
+
         author = request.form["author"].strip
         message = request.form["message"].strip
-        # TODO: Update database
-        # IMPORTANT: include id AND session["user"]
+
         if not author or not message:
             error = "Fields cannot be empty"
-        # TODO: Commit and close
 
-        return redirect(url_for("dashboard"))
+        else:
+            try:
+                conn.execute(
+                    "UPDATE posts SET author=?, message=? WHERE id=?",
+                    (author, message, id)
+                )
+                conn.commit()
+                conn.close()
+                return redirect(url_for("dashboard"))
+            except:
+                conn.rollback()
+                conn.close()
+                return "Error updating entry"
 
+    conn.close()
     return render_template("edit.html", entry=entry)
 
 # ---------- DELETE ----------
