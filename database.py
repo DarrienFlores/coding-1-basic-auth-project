@@ -18,7 +18,9 @@ def init_db():
         CREATE TABLE IF NOT EXISTS posts (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT, 
-            content TEXT
+            content TEXT,
+            username TEXT,
+            FOREIGN KEY (username) REFERENCES users(username)
         )
     """)
     conn.commit()

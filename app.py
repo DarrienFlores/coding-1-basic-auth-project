@@ -124,8 +124,8 @@ def create():
             conn = get_db()
             try:
                 conn.execute(
-                    "INSERT INTO posts (title, content) VALUES (?, ?)",
-                    (title, content)
+                    "INSERT INTO posts (title, content, username) VALUES (?, ?, ?)",
+                    (title, content, session["user"])
                 )
                 conn.commit()
 
