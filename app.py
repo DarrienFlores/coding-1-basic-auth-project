@@ -118,7 +118,7 @@ def create():
         title = request.form["title"].strip()
         content = request.form["content"].strip()
         # TODO: Connect to database
-        if not tile or not content:
+        if not title or not content:
             error = "Fields cannot be empty"
         else:
             conn = get_db()
@@ -158,16 +158,14 @@ def edit(id):
         "SELECT * FROM posts WHERE id=?",
         (id,)
     ).fetchone()
-    # TODO: Get entry WHERE id AND user
-    # This prevents editing other users' data
 
     if not entry:
         conn.close()
         return "Entry not found"
 
     if request.method == "POST":
-        title = request.form["title"].strip
-        content = request.form["content"].strip
+        title = request.form["title"].strip()
+        content = request.form["content"].strip()
 
         if not title or not content:
             error = "Fields cannot be empty"
