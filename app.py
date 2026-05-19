@@ -6,6 +6,7 @@ from flask import Flask, request, redirect, url_for, render_template, session
 from database import get_db, init_db
 import bcrypt
 import re
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
@@ -123,9 +124,11 @@ def create():
         else:
             conn = get_db()
             try:
+                # Get current time minus 4 hours for timezone correction, rounded to nearest second
+                now = (datetime.now() - timedelta(hours=4)).replace(microsecond=0)
                 conn.execute(
-                    "INSERT INTO posts (title, content, username) VALUES (?, ?, ?)",
-                    (title, content, session["user"])
+                    "INSERT INTO posts (title, content, username, created_at) VALUES (?, ?, ?, ?)",
+                    (title, content, session["user"], now)
                 )
                 conn.commit()
 
