@@ -162,6 +162,11 @@ def edit(id):
     if not entry:
         conn.close()
         return "Entry not found"
+    
+    # Check if the current user is the owner of the post
+    if entry['username'] != session['user']:
+        conn.close()
+        return "You can only edit your own posts"
 
     if request.method == "POST":
         title = request.form["title"].strip()
@@ -207,6 +212,11 @@ def delete(id):
     if not entry:
         conn.close()
         return "Entry not found"
+    
+    # Check if the current user is the owner of the post
+    if entry['username'] != session['user']:
+        conn.close()
+        return "You can only delete your own posts"
 
     if request.method == "POST":
         try:

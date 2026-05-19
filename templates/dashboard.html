@@ -24,11 +24,13 @@
         <h3>{{ entry['title'] }}</h3>
         <p>{{ entry['content'] }}</p>
 
-        <!-- TODO: Add Edit link -->
-        <a href="/edit/{{ entry['id'] }}">Edit</a>
+        {% if entry['username'] == username %}
+            <!-- TODO: Add Edit link -->
+            <a href="/edit/{{ entry['id'] }}">Edit</a>
 
-        <!-- TODO: Add Delete link -->
-        <a href="/delete/{{ entry['id'] }}">Delete</a>
+            <!-- TODO: Add Delete link -->
+            <a href="/delete/{{ entry['id'] }}">Delete</a>
+        {% endif %}
 
     </div>
     <hr>
