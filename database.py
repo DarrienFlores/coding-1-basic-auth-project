@@ -20,6 +20,7 @@ def init_db():
             title TEXT, 
             content TEXT,
             username TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (username) REFERENCES users(username)
         )
     """)
