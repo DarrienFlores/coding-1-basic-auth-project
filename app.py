@@ -124,7 +124,7 @@ def create():
         else:
             conn = get_db()
             try:
-                # Get current time minus 4 hours for timezone correction, rounded to nearest second
+                # Current time minus 4 hours for timezone correction
                 now = (datetime.now() - timedelta(hours=4)).replace(microsecond=0)
                 conn.execute(
                     "INSERT INTO posts (title, content, username, created_at) VALUES (?, ?, ?, ?)",
@@ -166,7 +166,7 @@ def edit(id):
         conn.close()
         return "Entry not found"
     
-    # Check if the current user is the owner of the post
+    # Prevents people from editing other peoples posts
     if entry['username'] != session['user']:
         conn.close()
         return "You can only edit your own posts"
@@ -216,7 +216,7 @@ def delete(id):
         conn.close()
         return "Entry not found"
     
-    # Check if the current user is the owner of the post
+    # Prevents people from deleting other peoples posts
     if entry['username'] != session['user']:
         conn.close()
         return "You can only delete your own posts"
