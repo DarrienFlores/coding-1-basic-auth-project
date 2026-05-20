@@ -5,7 +5,7 @@
 When you finish, add your names and a demo video link here, then submit one link to your project repository.
 
 **Group Members:** Philip D'Angelone, Darrien Flores  
-* [Demo Video (1 per group)]([http://includeyourlinkhere](https://new.express.adobe.com/id/urn:aaid:sc:VA6C2:a9932757-da01-4c25-a515-513ad521a85a?invite=true&accept=true&preload=sharesheet&promoid=Z2G1FQKR&mv=other))
+* [Demo Video (1 per group)](https://new.express.adobe.com/id/urn:aaid:sc:VA6C2:a9932757-da01-4c25-a515-513ad521a85a?invite=true&accept=true&preload=sharesheet&promoid=Z2G1FQKR&mv=other)
 
 ---
 
